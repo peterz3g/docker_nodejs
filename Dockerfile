@@ -9,10 +9,10 @@ ADD cron_jobs.txt /var/spool/cron/crontabs/root
 
 
 #some pip need to install first
-sudo apt-get update && \
-sudo apt-get upgrade && \
-sudo apt-get install -y nodejs && \
-sudo apt-get install -y npm && \
+RUN apt-get update && \
+apt-get upgrade && \
+apt-get install -y nodejs && \
+apt-get install -y npm && \
 ls
 
 RUN touch /code/jobs.log && \
