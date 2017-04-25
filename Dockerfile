@@ -15,9 +15,6 @@ ADD cron_jobs.txt /var/spool/cron/crontabs/root
 #some pip need to install first
 RUN apt-get -y update && \
 apt-get -y upgrade && \
-apt-get install -y cron && \
-apt-get install -y default-jre && \
-apt-get install -y vim && \
 apt-get install -y nodejs && \
 apt-get install -y npm && \
 ln -s /usr/bin/nodejs /usr/bin/node && \
@@ -25,6 +22,9 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org && \
 cnpm install npm -g && \
 cnpm install node -g && \
 cnpm install nodejs -g && \
+apt-get install -y cron && \
+apt-get install -y default-jre && \
+apt-get install -y vim && \
 touch /code/jobs.log && \
 chmod +x /code/entrypoint.sh && \
 chmod 0600 /var/spool/cron/crontabs/root && \
