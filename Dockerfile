@@ -23,8 +23,8 @@ pip install pandas==0.18.1 && \
 pip install -r /code/requirements.txt && \
 apt-get update && \
 apt-get upgrade && \
-apt-get install nodejs && \
-apt-get install npm && \
+apt-get install -y nodejs && \
+apt-get install -y npm && \
 apt-get clean && \
 apt-get autoclean && \
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
