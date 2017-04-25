@@ -1,4 +1,4 @@
-FROM daocloud.io/peterz3g/docker_django198_py27
+FROM daocloud.io/python:2.7
 MAINTAINER peterz3g <peterz3g@163.com>
 
 
@@ -15,6 +15,9 @@ ADD cron_jobs.txt /var/spool/cron/crontabs/root
 #some pip need to install first
 RUN apt-get -y update && \
 apt-get -y upgrade && \
+apt-get install -y cron && \
+apt-get install -y default-jre && \
+apt-get install -y vim && \
 apt-get install -y nodejs && \
 apt-get install -y npm && \
 ln -s /usr/bin/nodejs /usr/bin/node && \
