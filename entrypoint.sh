@@ -9,4 +9,13 @@ cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 service cron restart
 
+#npm install -g cnpm --registry=https://registry.npm.taobao.org
+#apt-get update -y
+#apt-get upgrade -y
+#apt-get install -y --force-yes nodejs
+
+#installed here: /usr/lib/node_modules or /user/local/lib/
+#cnpm install pomelo -g
+
+
 python /code/demo/manage.py runserver 0.0.0.0:8000
