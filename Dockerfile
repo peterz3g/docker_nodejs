@@ -13,9 +13,10 @@ RUN apt-get -y update && \
 apt-get -y upgrade && \
 apt-get install -y nodejs && \
 apt-get install -y npm && \
-ls
-
-RUN touch /code/jobs.log && \
+npm install npm -g && \
+npm install node -g && \
+npm install nodejs -g && \
+touch /code/jobs.log && \
 chmod +x /code/entrypoint.sh && \
 chmod 0600 /var/spool/cron/crontabs/root && \
 pip install --upgrade pip && \
