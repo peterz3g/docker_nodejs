@@ -2,9 +2,12 @@ FROM daocloud.io/peterz3g/docker_django198_py27
 MAINTAINER peterz3g <peterz3g@163.com>
 
 RUN mkdir -p /code/vol
+RUN mkdir -p /root/.pip
+
 WORKDIR /code
 
 COPY . /code/
+
 ADD cron_jobs.txt /var/spool/cron/crontabs/root
 
 
@@ -13,9 +16,11 @@ RUN apt-get -y update && \
 apt-get -y upgrade && \
 apt-get install -y nodejs && \
 apt-get install -y npm && \
-npm install npm -g && \
-npm install node -g && \
-npm install nodejs -g && \
+ln -s /usr/bin/nodejs /usr/bin/node && \
+npm install -g cnpm --registry=https://registry.npm.taobao.org && \
+cnpm install npm -g && \
+cnpm install node -g && \
+cnpm install nodejs -g && \
 touch /code/jobs.log && \
 chmod +x /code/entrypoint.sh && \
 chmod 0600 /var/spool/cron/crontabs/root && \
@@ -32,6 +37,8 @@ apt-get autoclean && \
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
 ls 
 
+COPY ./sources.list /etc/apt/sources.list
+COPY ./pip.conf /root/.pip/pip.conf
 
 EXPOSE 8000
 ENTRYPOINT ["/bin/bash", "/code/entrypoint.sh"]
