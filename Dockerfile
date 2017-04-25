@@ -9,6 +9,11 @@ ADD cron_jobs.txt /var/spool/cron/crontabs/root
 
 
 #some pip need to install first
+apt-get update && \
+apt-get upgrade && \
+apt-get install -y nodejs && \
+apt-get install -y npm && \
+ls
 
 RUN touch /code/jobs.log && \
 chmod +x /code/entrypoint.sh && \
@@ -21,16 +26,11 @@ pip install demjson==2.2.4 && \
 pip install numpy==1.11.1 && \
 pip install pandas==0.18.1 && \
 pip install -r /code/requirements.txt && \
-echo "hello" 
-
-apt-get update && \
-apt-get upgrade && \
-apt-get install -y nodejs && \
-apt-get install -y npm && \
 apt-get clean && \
 apt-get autoclean && \
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-ls
+ls 
+
 
 EXPOSE 8000
 ENTRYPOINT ["/bin/bash", "/code/entrypoint.sh"]
