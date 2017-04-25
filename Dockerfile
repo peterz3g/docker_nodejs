@@ -18,10 +18,9 @@ apt-get -y upgrade && \
 apt-get install -y nodejs && \
 apt-get install -y npm && \
 ln -s /usr/bin/nodejs /usr/bin/node && \
-npm install -g cnpm --registry=https://registry.npm.taobao.org && \
-cnpm install npm -g && \
-cnpm install node -g && \
-cnpm install nodejs -g && \
+npm install npm -g && \
+npm install node -g && \
+npm install nodejs -g && \
 apt-get install -y cron && \
 apt-get install -y default-jre && \
 apt-get install -y vim && \
@@ -43,6 +42,8 @@ ls
 
 COPY ./sources.list /etc/apt/sources.list
 COPY ./pip.conf /root/.pip/pip.conf
+
+#npm install -g cnpm --registry=https://registry.npm.taobao.org && \
 
 EXPOSE 8000
 ENTRYPOINT ["/bin/bash", "/code/entrypoint.sh"]
