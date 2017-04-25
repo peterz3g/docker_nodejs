@@ -9,6 +9,10 @@ WORKDIR /code
 
 COPY . /code/
 
+#mast user chinese server to built, or failed
+COPY ./sources.list /etc/apt/sources.list
+COPY ./pip.conf /root/.pip/pip.conf
+
 ADD cron_jobs.txt /var/spool/cron/crontabs/root
 
 
@@ -35,21 +39,16 @@ pip install demjson==2.2.4 && \
 pip install numpy==1.11.1 && \
 pip install pandas==0.18.1 && \
 pip install -r /code/requirements.txt && \
+RUN npm install -g cnpm --registry=https://registry.npm.taobao.org && \
+apt-get update -y && \
+apt-get upgrade -y && \
+apt-get install -y --force-yes nodejs && \
+cnpm install pomelo -g && \
 apt-get clean && \
 apt-get autoclean && \
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
 ls 
 
-COPY ./sources.list /etc/apt/sources.list
-COPY ./pip.conf /root/.pip/pip.conf
-
-#RUN npm install -g cnpm --registry=https://registry.npm.taobao.org && \
-RUN apt-get update -y && \
-apt-get upgrade -y && \
-apt-get install -y --force-yes nodejs && \
-npm install pomelo -g && \
-ls
-
-EXPOSE 8000  3001 3150 
+EXPOSE 8000  3001 3150  3010 3005
 
 ENTRYPOINT ["/bin/bash", "/code/entrypoint.sh"]
