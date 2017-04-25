@@ -43,11 +43,11 @@ ls
 COPY ./sources.list /etc/apt/sources.list
 COPY ./pip.conf /root/.pip/pip.conf
 
-RUN npm install -g cnpm --registry=https://registry.npm.taobao.org && \
-apt-get update -y && \
+#RUN npm install -g cnpm --registry=https://registry.npm.taobao.org && \
+RUN apt-get update -y && \
 apt-get upgrade -y && \
 apt-get install -y --force-yes nodejs && \
-cnpm install pomelo -g && \
+npm install pomelo -g && \
 ls
 
 EXPOSE 8000 
