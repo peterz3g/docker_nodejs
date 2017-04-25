@@ -1,6 +1,7 @@
 FROM daocloud.io/peterz3g/docker_django198_py27
 MAINTAINER peterz3g <peterz3g@163.com>
 
+
 RUN mkdir -p /code/vol
 RUN mkdir -p /root/.pip
 
