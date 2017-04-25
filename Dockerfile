@@ -1,4 +1,4 @@
-FROM node:7.9 
+FROM daocloud.io/peterz3g/docker_django198_py27
 MAINTAINER peterz3g <peterz3g@163.com>
 
 RUN mkdir -p /code/vol
@@ -22,6 +22,8 @@ pip install demjson==2.2.4 && \
 pip install numpy==1.11.1 && \
 pip install pandas==0.18.1 && \
 pip install -r /code/requirements.txt && \
+apt-get install nodejs && \
+apt-get install npm && \
 apt-get clean && \
 apt-get autoclean && \
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
