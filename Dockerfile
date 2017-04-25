@@ -50,6 +50,6 @@ apt-get install -y --force-yes nodejs && \
 npm install pomelo -g && \
 ls
 
-EXPOSE 8000 
+EXPOSE 8000  3001 3150 
 
 ENTRYPOINT ["/bin/bash", "/code/entrypoint.sh"]
