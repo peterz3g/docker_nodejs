@@ -13,7 +13,6 @@ ADD cron_jobs.txt /var/spool/cron/crontabs/root
 RUN touch /code/jobs.log && \
 chmod +x /code/entrypoint.sh && \
 chmod 0600 /var/spool/cron/crontabs/root && \
-make; make install && \
 pip install --upgrade pip && \
 pip install lxml==3.6.1 && \
 pip install Logbook==1.0.0 && \
