@@ -21,6 +21,8 @@ pip install demjson==2.2.4 && \
 pip install numpy==1.11.1 && \
 pip install pandas==0.18.1 && \
 pip install -r /code/requirements.txt && \
+apt-get update && \
+apt-get upgrade && \
 apt-get install nodejs && \
 apt-get install npm && \
 apt-get clean && \
