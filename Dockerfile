@@ -8,13 +8,7 @@ RUN mkdir -p /root/.pip
 WORKDIR /code
 
 COPY . /code/
-
-#mast user chinese server to built, or failed
-COPY ./sources.list /etc/apt/sources.list
-COPY ./pip.conf /root/.pip/pip.conf
-
 ADD cron_jobs.txt /var/spool/cron/crontabs/root
-
 
 #some pip need to install first
 RUN apt-get -y update && \
@@ -22,9 +16,6 @@ apt-get -y upgrade && \
 apt-get install -y nodejs && \
 apt-get install -y npm && \
 ln -s /usr/bin/nodejs /usr/bin/node && \
-npm install npm -g && \
-npm install node -g && \
-npm install nodejs -g && \
 apt-get install -y cron && \
 apt-get install -y default-jre && \
 apt-get install -y vim && \
@@ -39,16 +30,15 @@ pip install demjson==2.2.4 && \
 pip install numpy==1.11.1 && \
 pip install pandas==0.18.1 && \
 pip install -r /code/requirements.txt && \
-RUN npm install -g cnpm --registry=https://registry.npm.taobao.org && \
-apt-get update -y && \
-apt-get upgrade -y && \
-apt-get install -y --force-yes nodejs && \
-cnpm install pomelo -g && \
 apt-get clean && \
 apt-get autoclean && \
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
 ls 
 
 EXPOSE 8000  3001 3150  3010 3005
+
+#mast user chinese server to built, or failed
+COPY ./sources.list /etc/apt/sources.list
+COPY ./pip.conf /root/.pip/pip.conf
 
 ENTRYPOINT ["/bin/bash", "/code/entrypoint.sh"]
