@@ -13,6 +13,7 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 apt-get update -y
 apt-get upgrade -y
 apt-get install -y --force-yes nodejs
+apt-get install -y --force-yes npm
 
 #installed here: /usr/lib/node_modules or /user/local/lib/
 cnpm install pomelo -g
